@@ -11,8 +11,8 @@ else
     # Add the environment variable to /etc/environment
     echo "$ENV_VAR_NAME=\"$ENV_VAR_VALUE\"" | sudo tee -a /etc/environment
 
-    # Reload /etc/environment to make the new variable available immediately
-    source /etc/environment
+    # Export the variable in the current shell
+    export $ENV_VAR_NAME=$ENV_VAR_VALUE
 
     echo "Environment variable $ENV_VAR_NAME added successfully."
 fi
