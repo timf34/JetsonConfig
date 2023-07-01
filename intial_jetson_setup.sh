@@ -6,7 +6,7 @@
 
 
 # cd into Desktop
-cd ~/Desktop
+cd ~/$USER/Desktop
 
 # Check if FOVCamerasWebApp directory exists
 if [ ! -d "FOVCamerasWebApp" ]; then
@@ -25,7 +25,7 @@ sudo apt update
 sudo apt install python3-pip -y
 
 # Install FOVCamerasWebApp dependencies
-cd ~/Desktop/FOVCamerasWebApp/jetson
+cd ~/$USER/Desktop/FOVCamerasWebApp/jetson
 pip3 install -r nano_requirements.txt
 
 # Create a .env file 
@@ -35,7 +35,7 @@ echo "REACT_APP_URL=http://localhost:5000" > .env  # For development
 
 
 # Install JetsonWiFiManager dependencies
-cd ~/Desktop/JetsonWiFiManager
+cd ~/$USER/Desktop/JetsonWiFiManager
 pip3 install -r requirements.txt
 chmod +x install_packages.sh
 ./install_packages.sh
