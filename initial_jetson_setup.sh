@@ -28,8 +28,13 @@ fi
 sudo apt update
 sudo apt install python3-pip -y
 
+# Some other packages 
+sudo apt install nano
+
+pip3 install -r requirements.txt
+
 # Install FOVCamerasWebApp dependencies
-cd ~/$USER/Desktop/FOVCamerasWebApp/jetson
+cd ~/Desktop/FOVCamerasWebApp/jetson
 pip3 install -r nano_requirements.txt
 
 # Create a .env file 
@@ -39,7 +44,7 @@ echo "REACT_APP_URL=http://localhost:5000" > .env  # For development
 
 
 # Install JetsonWiFiManager dependencies
-cd ~/$USER/Desktop/JetsonWiFiManager
+cd ~/Desktop/JetsonWiFiManager
 pip3 install -r requirements.txt
 chmod +x install_packages.sh
 ./install_packages.sh
