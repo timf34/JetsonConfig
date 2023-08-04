@@ -4,20 +4,24 @@
 # Run this command before any of this to install imx477 driver (will need to follow commands and reboot)
 # sudo /opt/nvidia/jetson-io/jetson-io.py
 
+username=$USER
 
 # cd into Desktop
-cd ~/$USER/Desktop
+# Note: you might need to just hardcode the paths here!
+cd ~/Desktop
 
 # Check if FOVCamerasWebApp directory exists
 if [ ! -d "FOVCamerasWebApp" ]; then
     # Clone the FOVCamerasWebApp repository
     git clone https://github.com/timf34/FOVCamerasWebApp.git
+    sudo chown -R $USER: FOVCamerasWebApp
 fi
 
 # Check if JetsonWiFiManager directory exists
 if [ ! -d "JetsonWiFiManager" ]; then
     # Clone the JetsonWiFiManager repository
     git clone https://github.com/timf34/JetsonWiFiManager.git
+    sudo chown -R $USER: FOVCamerasWebApp
 fi
 
 # Install pip
