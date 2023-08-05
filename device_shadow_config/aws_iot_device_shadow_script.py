@@ -67,10 +67,21 @@ class DeviceMetrics:
 
     @staticmethod
     def get_network_info():
-        net_io = psutil.net_io_counters()
+        net_io_start = psutil.net_io_counters()
+        time.sleep(1)  # Wait for 1 second
+        net_io_end = psutil.net_io_counters()
+
+        # Calculate the difference in bytes over the interval
+        bytes_sent_per_sec = net_io_end.bytes_sent - net_io_start.bytes_sent
+        bytes_recv_per_sec = net_io_end.bytes_recv - net_io_start.bytes_recv
+
+        # Convert bytes per second to megabits per second (1 byte = 8 bits, 1 megabit = 10^6 bits)
+        mbps_sent = (bytes_sent_per_sec * 8) / 1e6
+        mbps_received = (bytes_recv_per_sec * 8) / 1e6
+
         return {
-            "bytes_sent": net_io.bytes_sent,
-            "bytes_received": net_io.bytes_received
+            "upload_speed_mbps": mbps_sent,
+            "download_speed_mbps": mbps_received
         }
 
     @staticmethod
