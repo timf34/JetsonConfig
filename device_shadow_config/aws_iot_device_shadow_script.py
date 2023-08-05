@@ -5,6 +5,7 @@ import shutil
 import psutil
 import subprocess
 import socket
+import speedtest
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTShadowClient
 
 
@@ -113,6 +114,23 @@ class DeviceMetrics:
         }
 
     @staticmethod
+    def get_bandwidth():
+        # Note: this method takes a while to execute
+        st = speedtest.Speedtest()
+        
+        # Get best server based on ping
+        st.get_best_server()
+        
+        # Measure download and upload speed
+        download_speed = st.download() / 1e6  # Convert from bits per second to Mbps
+        upload_speed = st.upload() / 1e6      # Convert from bits per second to Mbps
+
+        return {
+            "download_speed_mbps": download_speed,
+            "upload_speed_mbps": upload_speed
+        }
+
+    @staticmethod
     def get_local_ip():
         hostname = socket.gethostname()
         return socket.gethostbyname(hostname)
@@ -125,6 +143,7 @@ class DeviceMetrics:
             "temperature": self.get_temperature(),
             "services": self.get_running_services(),
             "network": self.get_network_info(),
+            "bandwidth": self.get_bandwidth(),
             "local_ip": self.get_local_ip()
         }
 
