@@ -201,7 +201,7 @@ def main():
         try:
             metrics = metrics_collector.collect_metrics()
             shadow_updater.update_shadow(metrics)
-            time.sleep(TEN_MINUTE_TIMEOUT_IN_SECONDS)
+            time.sleep(HOURLY_TIMEOUT_IN_SECONDS)
         except Exception as e:
             print(f"Error while collecting/updating metrics: {e}")
 
