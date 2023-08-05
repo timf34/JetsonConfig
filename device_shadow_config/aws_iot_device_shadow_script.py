@@ -1,16 +1,22 @@
 import json
+import os
 import time
 from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTShadowClient
 
-# TODO: probably use the environment variable DEVICE_NAME for Thing Name and Shadow Client (although append it with shadow client)
+# Get the env variable DEVICE NAME using try except block which raises an exception if the variable is not set.
+try:
+    THING_NAME = os.environ['DEVICE_NAME']
+    SHADOW_CLIENT = THING_NAME + "-shadow-client"
+except KeyError:
+    print("Please set the environment variable DEVICE_NAME (i.e. marvel-fov-n)")
+    sys.exit(1)
+
 
 # AWS IoT configuration.
 HOST = "a3lkzcadhi1yzr-ats.iot.eu-west-1.amazonaws.com"
 ROOT_CA = "/home/fov/aws-iot-certs/AmazonRootCA1.pem"
 PRIVATE_KEY = "/home/fov/aws-iot-certs/private.pem.key"
 CERTIFICATE = "/home/fov/aws-iot-certs/certificate.pem.crt"
-SHADOW_CLIENT = "marvel-fov-4-shadow-client"
-THING_NAME = "marvel-fov-4"  
 
 # Initialize the AWS IoT MQTT Shadow Client.
 shadow_client = AWSIoTMQTTShadowClient(SHADOW_CLIENT)
