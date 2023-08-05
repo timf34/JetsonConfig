@@ -10,11 +10,13 @@ from AWSIoTPythonSDK.MQTTLib import AWSIoTMQTTShadowClient
 
 
 # Configuration
-try:
-    THING_NAME = os.environ['DEVICE_NAME']
-except KeyError:
-    print("Please set the environment variable DEVICE_NAME (i.e. marvel-fov-n)")
-    exit(1)
+# try:
+#     THING_NAME = os.environ['DEVICE_NAME']
+# except KeyError:
+#     print("Please set the environment variable DEVICE_NAME (i.e. marvel-fov-n)")
+#     exit(1)
+
+THING_NAME = "marvel-fov-n"
 
 HOST = "a3lkzcadhi1yzr-ats.iot.eu-west-1.amazonaws.com"
 ROOT_CA = "/home/fov/aws-iot-certs/AmazonRootCA1.pem"
@@ -122,7 +124,7 @@ class DeviceShadowUpdater:
         device_shadow.shadowUpdate(state_json, None, 5)
 
 
-if __name__ == "__main__":
+def main():
     metrics_collector = DeviceMetrics()
     shadow_updater = DeviceShadowUpdater(THING_NAME, HOST, ROOT_CA, PRIVATE_KEY, CERTIFICATE)
     shadow_updater.connect()
@@ -131,3 +133,15 @@ if __name__ == "__main__":
         metrics = metrics_collector.collect_metrics()
         shadow_updater.update_shadow(metrics)
         time.sleep(TIMEOUT_SECONDS)
+
+
+def dev() -> None:
+    # Temp function for testing the outputs
+    metrics_collector = DeviceMetrics()
+    metrics = metrics_collector.collect_metrics()
+    print(metrics)
+
+
+if __name__ == "__main__":
+    # main()
+    dev()
