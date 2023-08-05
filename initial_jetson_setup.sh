@@ -30,6 +30,9 @@ sudo apt install python3-pip -y
 
 # Some other packages 
 sudo apt install nano
+sudo apt install cmake
+sudo apt install libssl-dev
+
 
 pip3 install -r requirements.txt
 
