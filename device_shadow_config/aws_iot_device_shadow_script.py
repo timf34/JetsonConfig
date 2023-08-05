@@ -34,9 +34,9 @@ class DeviceMetrics:
     def get_storage_info():
         total, used, free = shutil.disk_usage("/")
         return {
-            "total": total,
-            "used": used,
-            "free": free
+            "total (GB)": total / 1e9,   # Convert to GB
+            "used (GB)": used / 1e9,     # Convert to GB
+            "free (GB)": free / 1e9      # Convert to GB
         }
 
     @staticmethod
@@ -44,9 +44,9 @@ class DeviceMetrics:
         with open('/proc/meminfo', 'r') as f:
             lines = f.readlines()
         return {
-            "total": int(lines[0].split()[1]),
-            "free": int(lines[1].split()[1]),
-            "available": int(lines[2].split()[1])
+            "total (GB)": int(lines[0].split()[1]) / 1e6,      # Convert to GB
+            "free (GB)": int(lines[1].split()[1]) / 1e6,       # Convert to GB
+            "available (GB)": int(lines[2].split()[1]) / 1e6   # Convert to GB
         }
 
     @staticmethod
@@ -60,11 +60,37 @@ class DeviceMetrics:
 
     @staticmethod
     def get_running_services():
-        services = subprocess.check_output(['systemctl', 'list-units', '--type=service', '--state=running']).decode('utf-8')
+        active_services = subprocess.check_output(['systemctl', 'list-units', '--type=service', '--state=running']).decode('utf-8')
         failed_services = subprocess.check_output(['systemctl', 'list-units', '--type=service', '--state=failed']).decode('utf-8')
+
+        def parse_services(raw_output):
+            lines = [line.strip() for line in raw_output.split('\n') if line]
+            # Remove the header (1st line) as we'll hardcode the headers for parsing
+            lines = lines[1:]
+            
+            services = []
+            for line in lines:
+                parts = line.split(maxsplit=4)
+                # The split might produce more than 5 parts if DESCRIPTION had spaces. In that case, the last part will contain the remaining parts
+                if len(parts) > 5:
+                    parts = parts[:4] + [" ".join(parts[4:])]
+                
+                if len(parts) == 5:  # Ensure the line was in expected format
+                    service_data = {
+                        "UNIT": parts[0],
+                        "LOAD": parts[1],
+                        "ACTIVE": parts[2],
+                        "SUB": parts[3],
+                        "DESCRIPTION": parts[4]
+                    }
+                    services.append(service_data)
+            
+            return services
+
+
         return {
-            "active": services,
-            "failed": failed_services
+            "active": parse_services(active_services),
+            "failed": parse_services(failed_services)
         }
 
     @staticmethod
@@ -139,7 +165,8 @@ def dev() -> None:
     # Temp function for testing the outputs
     metrics_collector = DeviceMetrics()
     metrics = metrics_collector.collect_metrics()
-    print(metrics)
+    print(json.dumps(metrics, indent=2))
+
 
 
 if __name__ == "__main__":
