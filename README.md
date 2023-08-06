@@ -21,5 +21,5 @@ This repo contains scripts for setting up the Jetsons initially.
 Run the following to run this script:
 ```bash
 chmod +x set_env_vars.sh
-./set_env_var.sh
+./set_env_vars.sh
 ```
