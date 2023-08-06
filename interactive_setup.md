@@ -25,4 +25,4 @@ cd ~/Desktop/aws-iot-device-client
 sudo ./setup.sh
 ```
 
-testing the git pull service 
+testing the git pull service again 
