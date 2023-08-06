@@ -18,15 +18,14 @@ if [ ! -d "FOVCamerasWebApp" ]; then
 fi
 
 # Install pip
-sudo apt update
+sudo apt update -y
 sudo apt install python3-pip -y
 
 # Some other packages 
-sudo apt install nano
-sudo apt install cmake
-sudo apt install libssl-dev
-sudo apt install network-manager
-
+sudo apt install -y nano
+sudo apt install -y cmake
+sudo apt install -y libssl-dev
+sudo apt install -y network-manager
 
 pip3 install -r requirements.txt
 
@@ -38,7 +37,6 @@ pip3 install -r nano_requirements.txt
 touch .env
 # echo "REACT_APP_URL=http://localhost:5000" > .env  # For development
 echo "REACT_APP_URL=http://fovcameraswebappv2.eu-west-1.elasticbeanstalk.com" >> .env  # For production
-
 
 # ------------------- Download and build aws-iot-device-client ----------------------------
 cd ~/Desktop
@@ -66,7 +64,6 @@ cd ~/Desktop/JetsonConfig/git_pull_service
 chmod +x git_pull.sh
 chmod +x git_pull_setup.sh
 ./git_pull_setup.sh
-
 
 # ----------- Setup the device shadow service ------------
 cd ~/Desktop/JetsonConfig/device_shadow_config
