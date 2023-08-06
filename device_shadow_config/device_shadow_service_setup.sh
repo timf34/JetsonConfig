@@ -4,7 +4,7 @@
 
 echo "[Unit]
 Description=AWS IoT Device Shadow Python Script Service
-After=multi-user.target
+After=network.target
 
 [Service]
 Type=simple
