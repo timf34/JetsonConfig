@@ -6,6 +6,9 @@
 
 username=$USER
 
+# Run this so github creds are remembered
+git config --global credential.helper store
+
 # cd into Desktop
 # Note: you might need to just hardcode the paths here!
 cd ~/Desktop
@@ -70,3 +73,10 @@ cd ~/Desktop/JetsonConfig/device_shadow_config
 chmod +x aws_iot_device_shadow_script.py
 chmod +x device_shadow_service_setup.sh
 ./device_shadow_service_setup.sh
+
+
+# ----------- Setup the web app listener (i.e. jetson_simulator.py) service -----------
+cd ~/Desktop/FOVCamerasWebApp/jetson/configuring_jetsons
+chmod +x web_app_listener_setup.sh 
+# TODO: check if its best to run this as sudo or not... I would think not tbh
+./web_app_listener_setup.sh
