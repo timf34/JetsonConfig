@@ -25,4 +25,4 @@ cd ~/Desktop/aws-iot-device-client
 sudo ./setup.sh
 ```
 
-testing for the last time
+testing for the last time for real 
