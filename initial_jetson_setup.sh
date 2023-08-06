@@ -69,3 +69,7 @@ chmod +x git_pull_setup.sh
 
 
 # ----------- Setup the device shadow service ------------
+cd ~/Desktop/JetsonConfig/device_shadow_config
+chmod +x aws_iot_device_shadow_script.py
+chmod +x device_shadow_service_setup.sh
+./device_shadow_service_setup.sh
