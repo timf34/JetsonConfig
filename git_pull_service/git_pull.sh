@@ -20,9 +20,9 @@ function git_pull() {
     git pull
 }
 
-# the function to pull the JetsonWiFiManager git repo
+# the function to pull the JetsonConfig git repo
 function git_pull_jwm() {
-    cd /home/$USER_NAME/Desktop/JetsonWiFiManager
+    cd /home/$USER_NAME/Desktop/JetsonConfig
     git stash
     git pull
 }
