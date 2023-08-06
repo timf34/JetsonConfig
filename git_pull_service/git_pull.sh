@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USER_NAME="timf34"
+USER_NAME="fov"
 
 # the function to check the internet connection
 function check_internet() {
