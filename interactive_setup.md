@@ -24,3 +24,5 @@ Run this command from my laptop from the directory containing the certificates (
 cd ~/Desktop/aws-iot-device-client
 sudo ./setup.sh
 ```
+
+testing the git pull service 
