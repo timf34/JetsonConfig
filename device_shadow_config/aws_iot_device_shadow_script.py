@@ -11,7 +11,8 @@ from datetime import datetime
 
 # Configuration
 try:
-    THING_NAME = os.environ['DEVICE_NAME']
+    # When running as a service, we can't access env vars, so using hostname as a backup mechanism
+    THING_NAME = os.environ.get('DEVICE_NAME', socket.gethostname().lower())
 except KeyError:
     print("Please set the environment variable DEVICE_NAME (i.e. marvel-fov-n)")
     exit(1)
