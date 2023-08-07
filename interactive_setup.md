@@ -20,6 +20,9 @@ chmod +x set_env_vars.sh
 ./set_env_vars.sh
 ```
 
+You can run `export DEVICE_NAME="marvel-fov-n"` to set the variable for the current session 
+so you don't have to reboot.
+
 
 ### Transferring AWS IOT Certificates (ran before `initial_jetson_setup.sh`)
 
