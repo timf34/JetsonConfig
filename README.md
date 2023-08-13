@@ -15,6 +15,8 @@ This repo contains scripts for setting up the Jetsons initially.
 
 ### Running 
 
+**See the `interactive_setup.md` file for stuff that needs to be done before and after running `initial_jetson_setup.sh`**
+
 `set_env_vars.sh`
 - Be sure to change the variables!
 - Note that this script needs sudo priviledges!
