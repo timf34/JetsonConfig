@@ -43,3 +43,6 @@ Run this command from my laptop from the directory containing the certificates (
 cd ~/Desktop/aws-iot-device-client
 sudo ./setup.sh
 ```
+
+### Ensure `.env` is in production mode 
+`REACT_APP_URL=http://fovcameraswebappv2.ap-southeast-2.elasticbeanstalk.com`
