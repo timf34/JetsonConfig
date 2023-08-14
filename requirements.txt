@@ -3,3 +3,4 @@ awsiotsdk
 awscli
 AWSIoTPythonSDK
 psutil
+speedtest  # For device shadow
