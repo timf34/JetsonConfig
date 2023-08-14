@@ -1,5 +1,7 @@
 ﻿# JetsonConfig
 
+- [] TODO: integrate notes from `interactive_setup.md` into this file!
+
 This repo contains scripts for setting up the Jetsons initially. 
 
 `initial_jetson_setup.sh`
