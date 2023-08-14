@@ -39,7 +39,8 @@ pip3 install -r nano_requirements.txt
 # Create a .env file 
 touch .env
 # echo "REACT_APP_URL=http://localhost:5000" > .env  # For development
-echo "REACT_APP_URL=http://fovcameraswebappv2.eu-west-1.elasticbeanstalk.com" >> .env  # For production
+# TODO: ensure the URL is correct!
+echo "REACT_APP_URL=http://fovcameraswebappv2.ap-southeast-2.elasticbeanstalk.com/" >> .env  # For production
 
 # ------------------- Download and build aws-iot-device-client ----------------------------
 cd ~/Desktop
@@ -64,7 +65,8 @@ chmod 644 AmazonRootCA1.pem
 
 # ---------- Setup the git pull service ------------
 cd ~/Desktop/JetsonConfig/git_pull_service
-chmod +x git_pull.sh
+chmod +x git_pull.sh  # This doesn't seem to work!
+chmod +x /home/fov/Desktop/JetsonConfig/git_pull_service/git_pull.sh
 chmod +x git_pull_setup.sh
 ./git_pull_setup.sh
 
@@ -78,5 +80,4 @@ chmod +x device_shadow_service_setup.sh
 # ----------- Setup the web app listener (i.e. jetson_simulator.py) service -----------
 cd ~/Desktop/FOVCamerasWebApp/jetson/configuring_jetsons
 chmod +x web_app_listener_setup.sh 
-# TODO: check if its best to run this as sudo or not... I would think not tbh
 ./web_app_listener_setup.sh
