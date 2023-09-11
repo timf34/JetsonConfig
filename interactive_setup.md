@@ -46,3 +46,12 @@ sudo ./setup.sh
 
 ### Ensure `.env` is in production mode 
 `REACT_APP_URL=http://fovcameraswebappv2.ap-southeast-2.elasticbeanstalk.com`
+
+
+### Configure AWS with IAM role 
+
+Run `aws configure`
+
+You will then be prompted to input the access key and secret key. These are stored locally in `Documents/fov`. Also input the default region `ap-southeast-2`
+
+Won't be able to sync videos to S3 without this. 
