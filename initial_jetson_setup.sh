@@ -29,6 +29,9 @@ sudo apt install -y nano
 sudo apt install -y cmake
 sudo apt install -y libssl-dev
 sudo apt install -y network-manager
+sudo apt install -y python3-gi 
+
+cd ~/Desktop/JetsonConfig
 
 pip3 install -r requirements.txt
 
