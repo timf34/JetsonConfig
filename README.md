@@ -5,6 +5,22 @@
 - [] TODO: integrate notes from `interactive_setup.md` into this file!
 - [] TODO: Add notes on git creds (its in the notion, but not here)
 
+**Temp command for installing jetson-inference... I'll integrate this properly soon**
+
+```bash
+cd ~/Desktop && \
+sudo bash -c 'apt-get update && \
+apt-get install -y git cmake && \
+git clone --recursive --depth=1 https://github.com/timf34/jetson-inference && \
+cd jetson-inference && \
+mkdir build && \
+cd build && \
+cmake ../ && \
+make -j$(nproc) && \
+make install && \
+ldconfig'
+```
+
 ---
 
 This repo contains scripts for setting up the Jetsons initially. 
