@@ -3,6 +3,7 @@
 ---
 
 - [] TODO: integrate notes from `interactive_setup.md` into this file!
+- [] TODO: Add notes on git creds (its in the notion, but not here)
 
 ---
 
