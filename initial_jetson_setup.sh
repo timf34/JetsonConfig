@@ -80,11 +80,11 @@ chmod 644 certificate.pem.crt
 chmod 644 AmazonRootCA1.pem
 
 # ---------- Setup the git pull service ------------
-cd ~/Desktop/JetsonConfig/git_pull_service
-chmod +x git_pull.sh  # This doesn't seem to work!
-chmod +x /home/fov/Desktop/JetsonConfig/git_pull_service/git_pull.sh
-chmod +x git_pull_setup.sh
-./git_pull_setup.sh
+# cd ~/Desktop/JetsonConfig/git_pull_service
+# chmod +x git_pull.sh  # This doesn't seem to work!
+# chmod +x /home/fov/Desktop/JetsonConfig/git_pull_service/git_pull.sh
+# chmod +x git_pull_setup.sh
+# ./git_pull_setup.sh
 
 
 # ----------- Setup the web app listener (i.e. jetson_simulator.py) service -----------
