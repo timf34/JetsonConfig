@@ -68,7 +68,7 @@ cmake ../
 cmake --build . --target aws-iot-device-client
 
 # Run the setup after this initial install script as we need to do so interactively as root 
-# cd .. 
+# cd ..
 # sudo ./setup.sh
 
 # ---------- Change permissions of the aws iot device certificates ------------ (assuming they've already been downloaded)
@@ -79,16 +79,15 @@ chmod 600 private.pem.key
 chmod 644 certificate.pem.crt
 chmod 644 AmazonRootCA1.pem
 
+# ----------- Setup the web app listener (i.e. jetson_simulator.py) service -----------
+cd ~/Desktop/FOVCamerasWebApp/jetson/configuring_jetsons
+chmod +x web_app_listener_setup.sh 
+./web_app_listener_setup.sh
+
+# Note: I don't think the following works nor gets executed/ reached anyways
 # ---------- Setup the git pull service ------------
 cd ~/Desktop/JetsonConfig/git_pull_service
 chmod +x git_pull.sh  # This doesn't seem to work!
 chmod +x /home/fov/Desktop/JetsonConfig/git_pull_service/git_pull.sh
 chmod +x git_pull_setup.sh
 ./git_pull_setup.sh
-
-
-# ----------- Setup the web app listener (i.e. jetson_simulator.py) service -----------
-cd ~/Desktop/FOVCamerasWebApp/jetson/configuring_jetsons
-chmod +x web_app_listener_setup.sh 
-./web_app_listener_setup.sh
-
