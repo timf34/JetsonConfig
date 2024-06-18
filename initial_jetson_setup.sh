@@ -9,6 +9,10 @@ username=$USER
 # Run this so github creds are remembered
 git config --global credential.helper store
 
+# Set python3 as the default python version
+echo "alias python='python3'" >> ~/.bashrc
+source ~/.bashrc
+
 # cd into Desktop
 # Note: you might need to just hardcode the paths here!
 cd ~/Desktop
